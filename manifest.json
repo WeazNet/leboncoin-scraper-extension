@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Leboncoin scraper",
+  "version": "1.0.2",
+  "description": "Extension qui récupère des données du DOM et les enregistre dans un fichier JSON",
+  "icons": {
+    "256": "icons/icon.png"
+  },
+  "permissions": ["activeTab", "downloads", "<all_urls>"],
+  "browser_action": {
+    "default_icon": "icons/icon.png",
+    "default_popup": "popup.html"
+  }
+}
