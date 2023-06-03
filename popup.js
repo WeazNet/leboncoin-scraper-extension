@@ -13,8 +13,24 @@ function downloadJSON(data) {
   
   document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('download-button').addEventListener('click', function() {
-      browser.tabs.executeScript({ file: 'content.js' }).then(function(results) {
-        downloadJSON(results[0]);
-      });
+      let data = {};
+      browser.tabs.executeScript({ file: 'openDescription.js'})
+      .then(() => {
+        browser.tabs.executeScript({ file: 'getContent.js' })
+        .then((results) => {
+          data = results[0];
+          browser.tabs.executeScript({ file: 'getImages.js' })
+          .then((images) => {
+            data["images"] = images;
+            downloadJSON(data);
+          })
+          .catch((err) => {
+            document.getElementById("error").textContent = err;
+          });
+        })
+        .catch((err) => {
+          document.getElementById("error").textContent = err;
+        });
+      });   
     });
   });
