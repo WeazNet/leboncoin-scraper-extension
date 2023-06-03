@@ -21,7 +21,7 @@ function downloadJSON(data) {
           data = results[0];
           browser.tabs.executeScript({ file: 'getImages.js' })
           .then((images) => {
-            data["images"] = images;
+            data.images = images[0];
             downloadJSON(data);
           })
           .catch((err) => {

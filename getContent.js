@@ -21,7 +21,6 @@ const adHorsepower = document.querySelector('[data-qa-id="criteria_item_horsepow
 const adHorsepowerDIN = document.querySelector('[data-qa-id="criteria_item_horse_power_din"]').getElementsByTagName("span")[0].textContent.slice(0, -3);
 const adDescription = document.querySelector('[data-qa-id="adview_description_container"]').getElementsByTagName("p")[0].textContent;
 
-let adImages= [];
 let adOptions = []; 
 
 let checkImages = document.querySelector('[data-qa-id="adview_spotlight_container"]').getElementsByTagName("button")[0];
@@ -41,23 +40,23 @@ if(match)
 
 const data = {
   title: adTitle,
-  price: adPrice,
-  date: adDate,
+  price: parseInt(adPrice),
+  date: new Date(adDate),
   brand: adBrand,
   model: adModel,
-  year: adYear,
+  year: parseInt(adYear),
   issuanceDate: adIssuanceDate,
-  mileage: adMileage,
+  mileage: parseInt(adMileage),
   fuel: adFuel,
   gearbox: adGearbox,
   type: adType,
   color: adColor,
-  nbDoors: adNbDoors,
-  nbSeats: adNbSeats,
-  horsepower: adHorsepower,
-  horsepowerDIN: adHorsepowerDIN,
+  nbDoors: parseInt(adNbDoors),
+  nbSeats: parseInt(adNbSeats),
+  horsepower: parseInt(adHorsepower),
+  horsepowerDIN: parseInt(adHorsepowerDIN),
   description: adDescription,
-  images:adImages,
+  images:[],
   options:adOptions,
 };
 
