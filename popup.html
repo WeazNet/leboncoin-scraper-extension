@@ -5,26 +5,109 @@
     <title>Leboncoin scraper</title>
     <script src="popup.js"></script>
     <style>
-      #download-button {
-        background-color:#2596be;
-        box-shadow:6px solid rgb(16, 61, 78, .3);
-        border:none;
-        padding:.6em;
-        margin:.4em;
-        border-radius:4px;
-        font-weight:bolder;
-        cursor:pointer;
-        color:#fff;
-        transition:all .3s ease-in-out;
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-style: normal;
+        font-family: monospace;
       }
-      #download-button:hover{
-        background-color:#1c5b72;
-        transform:scale(1.02);
+      strong {
+        text-transform: uppercase;
+        font-size: 18px;
+        margin: 4px 0;
+      }
+      button {
+        background-color: black;
+        box-shadow: 6px solid rgb(16, 61, 78, 0.3);
+        border: none;
+        padding: 0.6em;
+        margin: 0.4em;
+        border-radius: 4px;
+        font-weight: bolder;
+        cursor: pointer;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #4e4e4e;
+        transform: scale(0.95);
+      }
+
+      label {
+        width: 100%;
+      }
+
+      input {
+        padding: 8px;
+        margin: 0.4em 0;
+        border: 1px solid black;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bolder;
+        width: calc(100% - 16px);
+      }
+
+      #connexion-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      #connexion-div.hidden {
+        display: none;
+      }
+
+      #sending-div {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      #sending-div.visible {
+        display: flex;
+      }
+
+      #download-button {
+        background-color: #d62f2f;
       }
     </style>
   </head>
   <body>
-    <p id="error"></p>
-    <button id="download-button">Extraire les données</button>
+    <main>
+      <strong>Leboncoin scraper</strong>
+      <p id="error"></p>
+
+      <div id="connexion-div">
+        <label for="username">
+          <input
+            name="username"
+            id="username"
+            placeholder="Entrez votre identifiant"
+          />
+        </label>
+        <label for="password">
+          <input
+            name="password"
+            type="password"
+            id="password"
+            placeholder="Entrez votre mot de passe"
+          />
+        </label>
+        <button id="connect-button">Se connecter</button>
+      </div>
+
+      <div id="sending-div">
+        <label for="url">
+          <input name="url" id="url" placeholder="Entrez l'url de votre site" />
+        </label>
+        <button id="send-button">Envoyer</button>
+      </div>
+
+      <button id="download-button">Extraire les données</button>
+    </main>
   </body>
 </html>
